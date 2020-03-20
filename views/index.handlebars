@@ -1,19 +1,67 @@
 <div class="container">
-    <div class="row headerRow">
-        <div class="col-md-12">
-            <h1>Eat-Da-Burger!</h1>
-        </div>
-        <div class="row mainContent"></div>
-        <div class="col-md-4 toBeDevoured">
+    <div class="row mt-4">
+        <div class="col-4 toBeDevoured">
+            <h2>Burgers Waiting to be Devoured</h2>
+            <ul>
+                {{#each burgers}}
+                <li>
+                    <p>
+                        {{this.id}}. {{this.burger_name}}
+                        <button data-burgerid="{{this.id}}" class="devourBurger">Devour Burger!</button>
+                    </p>
+                </li>
+                {{/each}}
+            </ul>
             {{!-- list of to be devoured will be added here --}}
         </div>
-        <div class="col-md-4 burgerForm">
-            <form>
-                <input name="burgerName" type="text" />
-                <button type="submit">Submit</button>
-            </form>
+        <div class="col-4 burgerForm">
+            <div class="row">
+                <div class="col-12 mt-4">
+                    <h1>Eat-Da-Burger!</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <form id="addBurger" action="/" method="POST">
+                        <textarea type="text" name="burger"></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 alreadyDevoured">
+                <h2>Devoured Burgers</h2>
+                {{!-- list of already devoured will be added here --}}
+            </div>
         </div>
     </div>
-    <div class="col-md-4 alreadyDevoured">
-        {{!-- list of already devoured will be added here --}}
-    </div>
+</div>
+
+<script type="text/javascript">
+    $("#addBurger").on("submit", function (event) {
+        // Make sure to preventDefault on a submit event.
+        event.preventDefault();
+
+        // [name=burger] will find an element with a "name" attribute equal to the string "burger"
+        var newBurger = {
+            burger_name: $("#addBurger [name=burger]").val().trim();
+            devoured: 0
+        };
+
+        // Send the POST request.
+        $.ajax("/api/burgers", {
+            type: "POST",
+            data: newBurger
+        }).then(
+            function () {
+                console.log("added new burger");
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
+
+
+</script>
