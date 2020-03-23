@@ -21,21 +21,6 @@ app.set("view engine", "handlebars");
 
 const routes = {
 
-    // app.get("/weekday", function(req, res) {
-    //     res.render("index", lunches[0]);
-    //   });
-
-    //   app.get("/weekend", function(req, res) {
-    //     res.render("index", lunches[1]);
-    //   });
-
-    //   app.get("/lunches", function(req, res) {
-    //     res.render("all-lunches", {
-    //       foods: lunches,
-    //       eater: "david"
-    //     });
-    //   });
-
 };
 
 app.listen(PORT, function () {
