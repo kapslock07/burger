@@ -6,7 +6,7 @@ var mysql = require("mysql");
 
 var connection = mysql.createConnection({
     host: "localhost",
-    port: 8889,
+    port: 3306,
     user: "root",
     password: "root",
     database: "burgers_db"
@@ -25,7 +25,7 @@ connection.connect(function (err) {
 // Routes
 // Use Handlebars to render the main index.html page with the burgers in it.
 router.get("/", function (req, res) {
-    burger.selectAll(function(data){
+    burger.selectAll(function (data) {
         res.render("index", { burgers: data });
     })
 });
@@ -34,21 +34,21 @@ router.get("/", function (req, res) {
 router.post("/api/burgers", function (req, res) {
 
 
-    burger.insertOne(req.body, function(result){
+    burger.insertOne(req.body, function (result) {
         //res.json(true)
         res.json({ id: result.insertId });
     })
 });
 
-router.put("/api/burgers/:id", function(req, res){
+router.put("/api/burgers/:id", function (req, res) {
     var condition = "id = " + req.params.id;
     console.log(condition)
-    burger.updateOne(req.body,condition, function(result) {
+    burger.updateOne(req.body, condition, function (result) {
         if (result.changedRows == 0) {
-          // If no rows were changed, then the ID must not exist, so 404
-          return res.status(404).end();
+            // If no rows were changed, then the ID must not exist, so 404
+            return res.status(404).end();
         } else {
-          res.status(200).end();
+            res.status(200).end();
         }
     });
 })

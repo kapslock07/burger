@@ -32,28 +32,32 @@
                 <div class="col-12 ml-3 mt-2">
                     <form id="addBurger" action="/" method="POST">
                         <textarea type="text" id="newBurgerName" name="burger"></textarea>
-                        <button type="submit">Submit</button>
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="submit">Submit</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
 
         {{!-- <div class="row"> --}}
-            <div class="col-4 alreadyDevoured">
-                <h2>Devoured Burgers</h2>
-                <ul>
-                    {{#each burgers}}
-                    {{#if devoured}}
-                    <li>
-                        <p>
-                            {{this.id}}. {{this.burger_name}}
-                        </p>
-                    </li>
-                    {{/if}}
-                    {{/each}}
-                </ul>
-                {{!-- list of already devoured will be added here --}}
-            </div>
+        <div class="col-4 pt-2 alreadyDevoured">
+            <h2>Devoured Burgers</h2>
+            <ul>
+                {{#each burgers}}
+                {{#if devoured}}
+                <li>
+                    <p>
+                        {{this.id}}. {{this.burger_name}}
+                    </p>
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+            {{!-- list of already devoured will be added here --}}
+        </div>
         {{!-- </div> --}}
     </div>
 </div>
