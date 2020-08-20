@@ -2,7 +2,7 @@
 "Node Express Handlebars" Homework
 
 ### `Link to Deployed App`
-[http://www.ryankaplancodes.com/](http://www.ryankaplancodes.com/)
+[https://guarded-gorge-31579.herokuapp.com/](https://guarded-gorge-31579.herokuapp.com/)
 
 ### `Description`
 Eat-Da-Burger! is a restaurant app that lets users input the names of burgers they'd like to eat.
